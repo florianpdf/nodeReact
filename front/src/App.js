@@ -2,20 +2,41 @@ import React, { Component } from 'react';
 import Gift from './Gift';
 import logo from './logo.png';
 import './App.css';
+import GiftService from './GiftService';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      gifts: []
+      gifts: [],
+      giftName: ''
     };
 
     this.removeGift = this.removeGift.bind(this);
+    this.updateField = this.updateField.bind(this);
+    this.add = this.add.bind(this);
+    this.load();
   }
 
-  removeGift() {
+  async load() {
+    const gifts = await GiftService.get();
+    this.setState({ gifts });
+  }
 
+  async removeGift(id) {
+    await GiftService.delete(id);
+    this.load();
+  }
+
+  updateField(evt) {
+    this.setState({ giftName: evt.target.value });
+  }
+
+  async add(evt) {
+    evt.preventDefault();
+    await GiftService.add(this.state.giftName);
+    this.load();
   }
 
   render() {
@@ -28,14 +49,15 @@ class App extends Component {
 
         <img src="https://media.giphy.com/media/JltOMwYmi0VrO/giphy.gif" />
 
-        <form>
-          <input type="text" />
+        <form onSubmit={this.add}>
+          <input type="text" onChange={this.updateField.bind(this)}/>
           <button type="submit"> Ajouter </button>
         </form>
 
         <div className="GiftWrapper">
-          <Gift name="Ferrari LaFerrari" remove={this.removeGift} />
-          <Gift name="Palace en Espagne" remove={this.removeGift} />
+          {this.state.gifts.map(gift =>
+              <Gift key={gift.id} id={gift.id} name={gift.name} remove={this.removeGift} />
+          )}
         </div>
 
         <button type="button" className="mail"> Dear Santa Florian, send me my gifts</button>
