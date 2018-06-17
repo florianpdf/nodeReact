@@ -1,27 +1,45 @@
 .App {
+  font-family: 'Roboto';
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
 }
 
 .App form {
   margin: 20px 0; 
 }
 
+.App button, input[type=button] {
+  font-family: Helvetica, sans-serif;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  background: #F44336;
+  border-radius: 3px;
+  transition: background .3s ease-in-out;
+}
+.App button:hover, input[type=button]:hover {
+  background: #EF5350;
+}
+
 .App form input {
+  font: Arial;
+  font-weight: 100; 
   width: 200px;
   margin-right: 10px; 
+  outline: none;
+  padding: 8px;
+  font-style: italic;
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid #dedede;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-  margin-bottom: 10px;
 }
 
 .App-title {

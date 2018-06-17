@@ -1,0 +1,35 @@
+.GiftsManager {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.GiftsWrapper {
+    font-family: 'Cedarville Cursive';
+    font-size: 1.25rem;
+    color: #455A64;
+    text-align: left;
+    border: 1px solid #ECEFF1;
+    padding: 16px 8px; 
+    margin-left: 48px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.GiftsManager .formField:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+.GiftsManager ul {
+    list-style: none;
+    margin: 0;
+    margin-bottom: 16px;
+}
+.GiftsManager .signature {
+    text-align: right;
+}
+
+.error {
+    padding: 8px;
+    color: #E53935;
+}

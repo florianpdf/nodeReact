@@ -14,10 +14,10 @@ class Gift extends Component {
 
   render() {
     return (
-      <div className="Gift">
-        {this.props.name}
-        <button className="remove" onClick={this.click}>X</button>
-      </div>
+      <li className="Gift">
+        - {this.props.name}
+        <span href="#" className="remove" onClick={this.click}>supprimer</span>
+      </li>
     );
   }
 }
