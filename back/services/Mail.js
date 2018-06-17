@@ -7,7 +7,6 @@ class Mail {
         // Aller sur: https://ethereal.email si les identifiants ne fonctionnent plus 
         // Les messages ne sont pas réellement envoyés via SMTP.
         // Allez sur: https://ethereal.email/messages (en utilisant les identifiants plus bas) pour voir les messages "envoyés"
-
         this.user = user;
         this.transport = nodemailer.createTransport({
             host: 'smtp.ethereal.email',
@@ -32,4 +31,4 @@ class Mail {
     }
 }
 
-module.exports = new Mail('bkr2cfvbjz4qbf43@ethereal.email', 'EqWw88uVH2VSE692Ts');
+module.exports = new Mail('jnmldefsvj5lym5p@ethereal.email', 'mXmUcAPm4mfTzAJqpY');

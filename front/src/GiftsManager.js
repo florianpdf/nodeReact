@@ -12,7 +12,8 @@ export default class GiftsManager extends React.Component {
         this.state = {
             name: '',
             gifts: [],
-            error: false
+            error: false,
+            sending: false
         };
         
         this.removeGift = this.removeGift.bind(this);
@@ -51,11 +52,20 @@ export default class GiftsManager extends React.Component {
         this.setState({name: evt.target.value});
     }
 
-    sendMail(evt) {
-        evt.preventDefault();
-        const html = document.querySelector('.GiftsWrapper').innerHTML;
+    getRawHTML($el) {
+        const parser = new DOMParser();
+        const $newEl = parser.parseFromString($el.innerHTML, 'text/html');
+        
+        $newEl.querySelectorAll('.remove').forEach(el => el.remove());
+        return $newEl.body.innerHTML;
+    }
 
-        MailService.send(html);
+    async sendMail(evt) {
+        evt.preventDefault();
+
+        this.setState({sending: true});
+        await MailService.send(this.getRawHTML(document.querySelector('.GiftsWrapper')));
+        this.setState({sending: false});
     }
     
     render() {
@@ -89,7 +99,10 @@ export default class GiftsManager extends React.Component {
                         <p>PS: J'ai été très sage cette année, promis !</p>
                     </div>
                 </div>
-                <button type="button" onClick={this.sendMail} className="mail"> Dear Santa Florian, send me my gifts</button>
+                <button type="button" onClick={this.sendMail} className="mail">
+                    {!this.state.sending && "Dear Santa Florian, send me my gifts"}
+                    {this.state.sending && "Envoi au Père Noël, attends un peu"}
+                </button>
             </div>
 
         );

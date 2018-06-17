@@ -1,16 +1,9 @@
 const path = require('path');
-const Sqlite3Storage = require('../storages/Sqlite3');
-const FSStorage = require('../storages/FSStorage');
 
 class GiftService {
     
-    constructor() {
-        // this.storage = new Sqlite3Storage(path.resolve('./data/santa.db'), 'gifts', {
-        //     id: 'INTEGER PRIMARY KEY AUTOINCREMENT',
-        //     name: 'VARCHAR(500)'
-        // });
-        // Other storage system available: 
-        this.storage = new FSStorage(path.resolve('./data/santa.json'), 'gifts');
+    constructor(storage) {
+        this.storage = storage;
     }
     
     add(gift) {
@@ -32,4 +25,4 @@ class GiftService {
 }
 
 
-module.exports = new GiftService();
+module.exports = GiftService;
