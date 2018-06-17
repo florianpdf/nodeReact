@@ -1,14 +1,21 @@
 .Gift {
-    min-height: 50px;
-    box-shadow: 5px 4px 12px 0px rgba(40, 40, 40, 0.708);
-    margin-bottom: 20px;
-    min-width: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-bottom: 8px;
+    align-self: flex-start;
+    justify-self: flex-start;
 }
 
 .Gift .remove {
-    margin-left: 10px; 
+    font-family: 'Cedarville Cursive';
+    font-size: 1rem;
+    background-color: transparent;
+    color: #455A64;
+    font-style: italic;
+    text-decoration: underline;
     outline: none;
+    cursor: pointer;
+    margin-left: 16px;
+}
+
+.Gift .remove:hover {
+    background-color: transparent;
 }

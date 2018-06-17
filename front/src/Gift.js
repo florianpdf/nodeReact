@@ -4,14 +4,20 @@ import './Gift.css';
 class Gift extends Component {
   constructor(props){
     super(props); 
+
+    this.click = this.click.bind(this);
+  }
+
+  click() {
+    this.props.remove(this.props.id);
   }
 
   render() {
     return (
-      <div className="Gift">
-        UN SUPER CADEAU
-        <button className="remove">X</button>
-      </div>
+      <li className="Gift">
+        - {this.props.name}
+        <span href="#" className="remove" onClick={this.click}>supprimer</span>
+      </li>
     );
   }
 }
