@@ -54,4 +54,4 @@ Pour les données :
 
 ![joy](https://media.giphy.com/media/26n62j7cS0aZOYCu4/giphy.gif)
 
-Tu peux te baser sur la quête [https://odyssey.wildcodeschool.com/quests/124](Envoyer un email).
+Tu peux te baser sur la quête [Envoyer un email](https://odyssey.wildcodeschool.com/quests/124).
