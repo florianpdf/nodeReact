@@ -34,8 +34,8 @@ class App extends Component {
         </form>
 
         <div className="GiftWrapper">
-          <Gift name="Ferrari LaFerrari" remove={this.removeGift} />
-          <Gift name="Palace en Espagne" remove={this.removeGift} />
+          <Gift name="Peluche cerf XXL" remove={this.removeGift} />
+          <Gift name="Ferrari en plastique" remove={this.removeGift} />
         </div>
 
         <button type="button" className="mail"> Dear Santa Florian, send me my gifts</button>

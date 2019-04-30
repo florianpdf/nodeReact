@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const Gifts = require('../controllers/Gifts');
+const gifts = require('../data/gifts.json');
 
-router
-  .route('/')
-  .get(Gifts.read)
-  .post(Gifts.create)
-  .delete(Gifts.delete);
+// Use this route to get all the gifts
+router.get('/', (req, res) => {
+  return res.json(gifts);
+});
+
+// You have two more routes to implement:
+// One to CREATE a new gift
+// One to DELETE a gift
 
 module.exports = router;
