@@ -10,9 +10,16 @@
 
 **Cloner** ce repo (**ne pas faire un fork**).
 
-Dès le début, créer une branche indiquant ta ville et ton nom/prénom, par exemple `toulouse_dupont_martin`.
+Dans ton dépôt local, crée une branche ayant le format suivant : ton prénom et nom sans accents ni espaces, séparés par des tirets, avec le nom en majuscule. Exemple : pour Éloïse Durant, crée une branche eloise-DURANT.
 
-A la fin du test, **faire une Pull Request**. 
+Passe sur cette branche pour la suite du checkpoint !
+
+Conseil : ajoute et commit tes modifications en local après chaque exercice, pour éviter les mauvaises surprises.
+
+Finalisation :
+Envoie les modifications de ta branche locale et pousse ces modifications sur le dépôt distant.
+
+Dans GitHub, vérifie que la branche existe et que tes modifications sont bien présentes. Ensuite fait une Pull Request de ta branche vers master, dont le titre contiendra ton nom et prénom.
 
 Le dépôt contient les répertoires suivants:
 * `front/` : Le projet en React (généré _via_ `create-react-app`)
