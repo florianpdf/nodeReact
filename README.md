@@ -7,8 +7,12 @@
 ![type](https://media.giphy.com/media/RRerwvHrb0nxm/giphy.gif)
 
 ## Instructions
-Forker le repo.
-A la fin du test, il faire une *PR**. 
+
+**Cloner** ce repo (**ne pas faire un fork**).
+
+Dès le début, créer une branche indiquant ta ville et ton nom/prénom, par exemple `toulouse_dupont_martin`.
+
+A la fin du test, **faire une Pull Request**. 
 
 Le dépôt contient les répertoires suivants:
 * `front/` : Le projet en React (généré _via_ `create-react-app`)
