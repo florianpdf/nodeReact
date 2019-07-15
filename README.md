@@ -61,7 +61,7 @@ Pour les données :
 
 ### (bonus) Sympa une belle liste, mais l'idée, c'est quand même que Santa la reçoive non ?
   
-* En utilisant NodeMailer, envoie un mail à ton Santa préféré, voilà son adresse: thomas.lechevalier@wildcodeschool.fr)
+* En utilisant NodeMailer, envoie un mail à ton Santa préféré, voilà son adresse: benoit.hubert@wildcodeschool.fr)
 
 ![joy](https://media.giphy.com/media/26n62j7cS0aZOYCu4/giphy.gif)
 
