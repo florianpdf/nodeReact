@@ -8,15 +8,35 @@ class App extends Component {
     super(props);
 
     this.state = {
-      gifts: []
+      gifts: [],
+      value: '',
     };
 
     this.removeGift = this.removeGift.bind(this);
+    this.addGift = this.addGift.bind(this);
+    this.onChangeValue = this.onChangeValue.bind(this);
   }
 
-  removeGift() {
+  removeGift(id) {
+    let giftsList = this.state.gifts;
+    let newListOfGifts = giftsList.splice(id, 1);
+    this.setState({ giftsList: newListOfGifts })
+  };
 
-  }
+
+  addGift = () => {
+    this.setState(state => {
+      const gifts = state.gifts.push(state.value);
+      return {
+        ...gifts,
+        value: '',
+      };
+    });
+  };
+
+  onChangeValue = e => {
+    this.setState({ value: e.target.value });
+  };
 
   render() {
     return (
@@ -26,18 +46,31 @@ class App extends Component {
           <h1 className="App-title">It's Christmas !</h1>
         </header>
 
-        <img src="https://media.giphy.com/media/JltOMwYmi0VrO/giphy.gif" />
+        <img src="https://wildcodeschool.fr/wp-content/uploads/2018/02/Benoi%CC%82t-Hubert-300x257.png" />
 
         <form>
-          <input type="text" />
-          <button type="submit"> Ajouter </button>
+          <input
+            type="text"
+            value={this.state.value}
+            onChange={this.onChangeValue}
+          />
+          <button
+            type="button"
+            onClick={this.addGift}
+          >
+            Ajouter
+            </button>
         </form>
-
-        <div className="GiftWrapper">
-          <Gift name="Peluche cerf XXL" remove={this.removeGift} />
-          <Gift name="Ferrari en plastique" remove={this.removeGift} />
-        </div>
-
+        <ul>
+          {this.state.gifts.map((item, index) => (
+            <Gift
+              remove={this.removeGift}
+              id={index}
+              list={this.state.gifts}
+            >
+            </Gift>
+          ))}
+        </ul>
         <button type="button" className="mail"> Dear Santa Florian, send me my gifts</button>
 
       </div>
