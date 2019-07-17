@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
     to: 'benoit.hubert@wildcodeschool.fr', // list of receivers
     subject: 'Coucou Guru', // Subject line 
     text: 'My god, my world', // plain text body
-    html: `ma liste pour toi : ${name}` // html body
+    html: name // html body
   };
 
   // send mail with defined transport object
