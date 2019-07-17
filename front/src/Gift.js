@@ -11,7 +11,7 @@ class Gift extends Component {
     return (
       <div className="Gift">
 
-        {list[id]}
+        {list}
 
         <button
           onClick={() => this.props.remove(id)}

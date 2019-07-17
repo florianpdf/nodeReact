@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Gift from './Gift';
 import logo from './logo.png';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {
@@ -16,27 +17,40 @@ class App extends Component {
     this.removeGift = this.removeGift.bind(this);
     this.addAGift = this.addAGift.bind(this);
     this.onChangeValue = this.onChangeValue.bind(this);
-
+    this.getAllTheCadow = this.getAllTheCadow.bind(this);
+    this.addAGift = this.addAGift.bind(this);
+  }
+  componentDidMount() {
+    this.getAllTheCadow();
+  }
+  getAllTheCadow() {
+    axios
+      .get('/gifts')
+      .then(response => response.data)
+      .then(data => {
+        this.setState({
+          gifts: data
+        });
+      });
   }
 
-  removeGift(index) {
-    let giftList = this.state.gifts;
-    let newgiftList = giftList.splice(index, 1);
-    this.setState({ giftList: newgiftList })
-
+  removeGift(id) {
+    axios
+      .delete(`/NoCadowForBadGuy/${id}`)
+      .then(this.getAllTheCadow)
   };
 
   addAGift = () => {
-    // not allowed AND not working
-    this.setState(state => {
-      const gifts = state.gifts.push(state.value);
 
-      return {
-        ...gifts,
-        value: '',
-      };
-    });
-  };
+    axios.post('/PostAGifts', { name: this.state.value })
+      .then(this.getAllTheCadow)
+      .then(data => {
+        this.setState({ value: "" })
+      });
+
+
+  }
+
 
   onChangeValue = e => {
     this.setState({ value: e.target.value });
@@ -69,12 +83,12 @@ class App extends Component {
         <div className="GiftWrapper">
 
 
-          {this.state.gifts.map((item, index) =>
+          {this.state.gifts.map((item) =>
 
             <Gift
-              id={index}
+              id={item.id}
               remove={this.removeGift}
-              list={this.state.gifts} />
+              list={item.name} />
 
           )}
 
