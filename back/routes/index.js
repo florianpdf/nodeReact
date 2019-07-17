@@ -2,12 +2,17 @@ const express = require('express');
 const router = express.Router();
 const db = require('../connection');
 
+
 // const gifts = require('../data/gifts.json');
 
 // Use this route to get all the gifts
 router.get('/', (req, res) => {
   return res.json(gifts);
 });
+
+
+
+
 
 router.get('/gifts', (req, res) => {
   // Appeler la méthode query sur l'object connection
@@ -47,5 +52,7 @@ router.delete('/NoCadowForBadGuy/:id', (req, res) => {
     return res.sendStatus(200);
   });
 });
+
+
 
 module.exports = router;

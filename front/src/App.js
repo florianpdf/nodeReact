@@ -19,6 +19,8 @@ class App extends Component {
     this.onChangeValue = this.onChangeValue.bind(this);
     this.getAllTheCadow = this.getAllTheCadow.bind(this);
     this.addAGift = this.addAGift.bind(this);
+    this.sendMail = this.sendMail.bind(this);
+
   }
   componentDidMount() {
     this.getAllTheCadow();
@@ -50,6 +52,14 @@ class App extends Component {
 
 
   }
+
+
+  sendMail = () => {
+    axios
+      .post('/mail')
+      .then(response => response.data)
+  }
+
 
 
   onChangeValue = e => {
@@ -96,7 +106,13 @@ class App extends Component {
 
         </div>
 
-        <button type="button" className="mail"> Dear Santa Florian, send me my gifts</button>
+        <button
+          type="button"
+          className="mail"
+          onClick={this.sendMail}
+        >
+          Dear Santa Florian, send me my gifts
+        </button>
 
       </div>
     );

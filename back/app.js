@@ -2,11 +2,9 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-
 var index = require('./routes/index');
-
+var roadMail = require('./routes/roadMail');
 var app = express();
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -19,6 +17,9 @@ app.use('/', index);
 app.use('/gifts', index);
 app.use('/PostAGifts', index);
 app.use('/NoCadowForBadGuy', index);
+
+app.use('/', roadMail);
+app.use('/mail', roadMail);
 
 // catch 404 error
 app.use(function (req, res, next) {
