@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
       return console.log(error);
     }
     console.log('Message sent: %s', info.messageId);
-    res.status(200).send("bien joué")
+    res.sendStatus(200)
   });
 });
 
