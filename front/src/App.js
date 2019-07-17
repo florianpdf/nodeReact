@@ -16,6 +16,7 @@ class App extends Component {
     this.addGift = this.addGift.bind(this);
     this.onChangeValue = this.onChangeValue.bind(this);
     this.getAllGifts = this.getAllGifts.bind(this);
+    this.sendMail = this.sendMail.bind(this);
   }
 
   componentDidMount() {
@@ -54,15 +55,31 @@ class App extends Component {
     this.setState({ value: e.target.value });
   };
 
+  sendMail = async (e) => {
+    const { gifts } = this.state;
+    e.preventDefault();
+    await axios.post('/send', {
+      name: gifts.map(gift => gift.name).join(', ')
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">It's Christmas !</h1>
+          <h1 className="App-title">It's Guru's day !</h1>
         </header>
 
-        <img src="https://wildcodeschool.fr/wp-content/uploads/2018/02/Benoi%CC%82t-Hubert-300x257.png" />
+        <img src="https://wildcodeschool.fr/wp-content/uploads/2018/02/Benoi%CC%82t-Hubert-300x257.png" alt="guru" />
 
         <form>
           <input
@@ -87,7 +104,7 @@ class App extends Component {
             </Gift>
           ))}
         </ul>
-        <button type="button" className="mail"> Dear Santa Florian, send me my gifts</button>
+        <button onClick={this.sendMail} type="submit" className="mail"> Maitre, send me my gifts</button>
       </div>
     );
   }

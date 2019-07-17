@@ -4,6 +4,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+const routerMail = require('./routes/routerMail');
 
 var app = express();
 
@@ -14,8 +15,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
 app.use('/gifts', index);
+app.use('/send', routerMail);
 
 
 // catch 404 error
