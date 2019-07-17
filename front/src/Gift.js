@@ -10,7 +10,7 @@ class Gift extends Component {
     const { list, id, remove } = this.props;
     return (
       <div className="Gift">
-        {list[id]}
+        {list}
         <button
           onClick={() => remove(id)}
           className="remove"

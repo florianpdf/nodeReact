@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Gift from './Gift';
 import logo from './logo.png';
 import './App.css';
@@ -11,27 +12,42 @@ class App extends Component {
       gifts: [],
       value: '',
     };
-
     this.removeGift = this.removeGift.bind(this);
     this.addGift = this.addGift.bind(this);
     this.onChangeValue = this.onChangeValue.bind(this);
+    this.getAllGifts = this.getAllGifts.bind(this);
+  }
+
+  componentDidMount() {
+    this.getAllGifts();
+  }
+
+  getAllGifts() {
+    axios
+      .get('/gifts')
+      .then(response => response.data)
+      .then(data => {
+        this.setState({
+          gifts: data
+        });
+      });
   }
 
   removeGift(id) {
-    let giftsList = this.state.gifts;
-    let newListOfGifts = giftsList.splice(id, 1);
-    this.setState({ giftsList: newListOfGifts })
+    axios
+      .delete(`/gifts/${id}`)
+      .then(this.getAllGifts)
   };
 
-
   addGift = () => {
-    this.setState(state => {
-      const gifts = state.gifts.push(state.value);
-      return {
-        ...gifts,
-        value: '',
-      };
-    });
+    axios
+      .post('/gifts', { name: this.state.value })
+      .then(this.getAllGifts)
+      .then(data => {
+        this.setState({
+          value: '',
+        });
+      });
   };
 
   onChangeValue = e => {
@@ -62,17 +78,16 @@ class App extends Component {
             </button>
         </form>
         <ul>
-          {this.state.gifts.map((item, index) => (
+          {this.state.gifts.map((item) => (
             <Gift
               remove={this.removeGift}
-              id={index}
-              list={this.state.gifts}
+              id={item.id}
+              list={item.name}
             >
             </Gift>
           ))}
         </ul>
         <button type="button" className="mail"> Dear Santa Florian, send me my gifts</button>
-
       </div>
     );
   }
