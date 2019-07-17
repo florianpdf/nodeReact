@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
   let mailOptions = {
     from: "chatoncamionvaguelette@gmail.com", // sender address
     to: 'benoit.hubert@wildcodeschool.fr', // list of receivers
-    subject: 'Coucou Guru', // Subject line
+    subject: 'Coucou Guru', // Subject line 
     text: 'My god, my world', // plain text body
     html: `ma liste pour toi : ${name}` // html body
   };
@@ -34,6 +34,7 @@ router.post('/', (req, res) => {
       return console.log(error);
     }
     console.log('Message sent: %s', info.messageId);
+    res.status(200).send("bien joué")
   });
 });
 
