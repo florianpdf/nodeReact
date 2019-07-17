@@ -18,7 +18,6 @@ app.use('/gifts', index);
 app.use('/PostAGifts', index);
 app.use('/NoCadowForBadGuy', index);
 
-app.use('/', roadMail);
 app.use('/mail', roadMail);
 
 // catch 404 error

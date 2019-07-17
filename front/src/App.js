@@ -56,8 +56,10 @@ class App extends Component {
 
   sendMail = () => {
     axios
-      .post('/mail')
-      .then(response => response.data)
+      .post('/mail', {
+        data: this.state.gifts.map(data =>
+          data.name).join('--')
+      })
   }
 
 

@@ -4,11 +4,11 @@ const db = require('../connection');
 const main = require('./mail');
 
 
-router.post('/mail', (req, res) => {
-
-  main()
-    .catch(console.error);
-  return console.log('ok')
+router.post('/', (req, res) => {
+  const { data } = req.body
+  main(data)
+    .catch(console.error)
+    .then(() => res.sendStatus(200))
 });
 
 
